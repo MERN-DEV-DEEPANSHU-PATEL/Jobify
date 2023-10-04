@@ -18,8 +18,10 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 const corsOptions = {
-  origin: process.env.CLIENT_URL, // Allow requests only from example.com
-  optionsSuccessStatus: 200, // Some legacy browsers (IE11, various SmartTVs) choke on 204
+  origin: process.env.CLIENT_URL, // Allow requests from this origin
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true, // If you need to include cookies in the request
 };
 
 app.use(cors(corsOptions));
