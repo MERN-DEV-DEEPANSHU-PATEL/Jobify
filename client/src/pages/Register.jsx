@@ -44,8 +44,9 @@ const Register = () => {
       dispatch(setupUserSuccess({ user, token, location, alertText }));
       addUserToLocalStorage({ user, token, location });
     } catch (error) {
+      console.log(error);
       if (error.code === "ERR_NETWORK") {
-        dispatch(setupUserError({ msg: "Internet Connection Error" }));
+        dispatch(setupUserError({ msg: "Server Connection Error" }));
       } else {
         dispatch(setupUserError({ msg: error.response.data.msg }));
       }
